@@ -13,6 +13,26 @@ const questions:QuestionAnswer = {
       {
         answer: "Nasi",
         score: 20
+      },
+      {
+        answer: "Bakso",
+        score: 90
+      },
+      {
+        answer: "Sate",
+        score: 70
+      },
+      {
+        answer: "Soto",
+        score: 60
+      },
+      {
+        answer: "Pecel",
+        score: 50
+      },
+      {
+        answer: "Lontong",
+        score: 30
       }
     ]
   },

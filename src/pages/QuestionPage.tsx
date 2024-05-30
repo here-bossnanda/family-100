@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Toaster } from "@/components/ui/toaster"
+import { Separator } from "@/components/ui/separator"
 import Answer from "@/components/Answer"
 
 import questions from "@/lib/questions"
@@ -15,6 +16,7 @@ function QuestionPage() {
   const params = useParams()
   const navigate = useNavigate()
 
+  const TOAST_DURATION = 2000
   const [answer, setAnswer] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -58,14 +60,14 @@ function QuestionPage() {
     if (questionId === totalQuestion) {
       return (
         <Link to="/thankyou">
-          <Button>Selesai</Button>
+          <Button>Selesai 🎉</Button>
         </Link>
       )
     }
     return (
       <div>
         <Button onClick={() => goToNextQuestion()}>
-          Pertanyaan ke {nextQuestionId}
+          Pertanyaan ke {nextQuestionId} 👉
         </Button>
       </div>
     )
@@ -84,14 +86,17 @@ function QuestionPage() {
       toast({
         title: "Jawaban Salah",
         description: "Coba lagi ya!",
-        variant: "destructive"
+        variant: "destructive",
+        duration: TOAST_DURATION
       })
       return
     } else {
       toast({
         title: "Jawaban Benar",
-        description: "Selamat!"
+        description: "Selamat!",
+        duration: TOAST_DURATION
       })
+      setAnswer("")
       setAnswers((prev) =>
         prev.map((ans, index) => {
           if (index === indexCorrectAnswer) {
@@ -116,15 +121,20 @@ function QuestionPage() {
 
   return (
     <>
-      <div className=" w-full h-screen flex items-center justify-center">
+      <div className=" w-full min-h-svh flex items-center justify-center p-4">
         <div className=" flex flex-col items-center">
           {loading ? (
-            <Skeleton className=" h-8 w-[500px] mb-4" />
+            <Skeleton className=" h-8 w-full sm:w-[500px] mb-4" />
           ) : (
-            <h1 className=" text-3xl mb-4">{questions[questionId].question}</h1>
+            <h1 className=" text-3xl mb-4 text-center">
+              {questions[questionId].question}
+            </h1>
           )}
-          <div className=" mb-16 mx-auto">
-            <form className=" flex space-x-2 mb-4" onSubmit={checkAnswer}>
+          <div className=" mb-16 mx-auto w-full">
+            <form
+              className=" flex flex-col sm:flex-row gap-2 mb-4"
+              onSubmit={checkAnswer}
+            >
               <Input
                 type="text"
                 placeholder="Apa Jawaban Kamu?"
@@ -133,7 +143,8 @@ function QuestionPage() {
               />
               <Button type="submit">Cek Jawaban 🧐</Button>
             </form>
-            <div className=" grid grid-cols-2 gap-4">
+            <Separator className=" mb-4" />
+            <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 ">
               {answers.map((a, i) => (
                 <Answer
                   key={i}
