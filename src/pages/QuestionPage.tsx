@@ -101,7 +101,7 @@ function QuestionPage() {
 
   const PreviousButton = () => {
     if (questionId > 0) {
-      let word = `👈 Balik ke pertanyaan ${prevQuestionId}`;
+      let word = `👈 Balik ke sebelumnya`;
       if (questionId === 1) {
         word = "👈 balik ke contoh";
       }
