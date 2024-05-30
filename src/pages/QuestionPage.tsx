@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import Answer from "@/components/Answer"
 
 import questions from "@/lib/questions"
+import playSound from "@/lib/howler"
 
 function QuestionPage() {
   const { toast } = useToast()
@@ -89,6 +90,7 @@ function QuestionPage() {
         variant: "destructive",
         duration: TOAST_DURATION
       })
+      playSound('error')
       return
     } else {
       toast({
@@ -96,6 +98,7 @@ function QuestionPage() {
         description: "Selamat!",
         duration: TOAST_DURATION
       })
+      playSound('success')
       setAnswer("")
       setAnswers((prev) =>
         prev.map((ans, index) => {
