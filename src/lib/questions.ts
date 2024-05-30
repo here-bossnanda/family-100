@@ -1,56 +1,104 @@
-const questions:QuestionAnswer = {
-  1: {
-    question: "Makanan yang sering dimakan saat sore hari.",
+const questions: QuestionAnswer = {
+  0: {
+    question:
+      "Buah apa yang bijinya dikeluarkan dari mulut setelah buahnya dimakan?",
     answers: [
-      {
-        answer: "Gorengan",
-        score: 80
-      },
-      {
-        answer: "Mie",
-        score: 40
-      },
-      {
-        answer: "Nasi",
-        score: 20
-      },
-      {
-        answer: "Bakso",
-        score: 90
-      },
-      {
-        answer: "Sate",
-        score: 70
-      },
-      {
-        answer: "Soto",
-        score: 60
-      },
-      {
-        answer: "Pecel",
-        score: 50
-      },
-      {
-        answer: "Lontong",
-        score: 30
-      }
+      { answer: "Duku", score: 30 },
+      { answer: "Kelengkeng", score: 20 },
+      { answer: "Duren", score: 40 }
+    ]
+  },
+  1: {
+    question: "Makanan apa yang biasanya dimakan untuk sarapan?",
+    answers: [
+      { answer: "Nasi Goreng", score: 10 },
+      { answer: "Bubur", score: 30 },
+      { answer: "Roti", score: 40 },
+      { answer: "Nasi Uduk", score: 20 }
     ]
   },
   2: {
-    question: "Hewan yang paling lucu.",
+    question:
+      "Makanan apa yang dimasukkan ibu-ibu ke dalam tas saat acara selamatan?",
     answers: [
-      {
-        answer: "Kucing",
-        score: 90
-      },
-      {
-        answer: "Anjing",
-        score: 80
-      },
-      {
-        answer: "Paus",
-        score: 58
-      }
+      { answer: "Gorengan", score: 20 },
+      { answer: "Buah", score: 30 },
+      { answer: "Kue", score: 40 },
+      { answer: "Nasi Kotak", score: 10 }
+    ]
+  },
+  3: {
+    question: "Pada saat apa orang menitip dibelikan makan kepada teman?",
+    answers: [
+      { answer: "Sakit", score: 20 },
+      { answer: "Istirahat", score: 30 },
+      { answer: "Sibuk", score: 10 },
+      { answer: "Tidak Ada Uang", score: 40 }
+    ]
+  },
+  4: {
+    question: "Judul lagu anak-anak apa yang liriknya bercerita tentang hewan?",
+    answers: [
+      { answer: "Potong Bebek Angsa", score: 20 },
+      { answer: "Cicak Cicak Di Dinding", score: 10 },
+      { answer: "Burung Kakak Tua", score: 30 },
+      { answer: "Anak Kambing Saya", score: 50 }
+    ]
+  },
+  5: {
+    question: "Buah apa yang biasa ditepuk-tepuk saat ingin dibeli?",
+    answers: [
+      { answer: "Kelapa", score: 30 },
+      { answer: "Melon", score: 10 },
+      { answer: "Semangka", score: 20 },
+      { answer: "Duren", score: 40 }
+    ]
+  },
+  6: {
+    question: "Istilah apa yang menggunakan kata Hitam?",
+    answers: [
+      { answer: "Kambing Hitam", score: 30 },
+      { answer: "Ilmu Hitam", score: 40 },
+      { answer: "Hitam manis", score: 20 },
+      { answer: "Daftar Hitam", score: 10 }
+    ]
+  },
+  7: {
+    question: "Pada saat kondisi apa orang melakukan Healing?",
+    answers: [
+      { answer: "Banyak Kerjaan", score: 50 },
+      { answer: "Galau", score: 40 },
+      { answer: "Stres", score: 30 },
+      { answer: "Penat", score: 10 }
+    ]
+  },
+  8: {
+    question:
+      "Materi baca tulis apa yang biasanya dipelajari siswa di mata pelajaran Bahasa Indonesia?",
+    answers: [
+      { answer: "Pantun", score: 30 },
+      { answer: "Puisi", score: 40 },
+      { answer: "Cerpen", score: 20 },
+      { answer: "EYD", score: 50 }
+    ]
+  },
+  9: {
+    question: "Selain belum mengantuk, apa penyebab orang tidak bisa tidur?",
+    answers: [
+      { answer: "Gelisah", score: 20 },
+      { answer: "Sakit", score: 10 },
+      { answer: "Insomnia", score: 30 },
+      { answer: "Minum Kopi", score: 40 }
+    ]
+  },
+  10: {
+    question:
+      "Apa nama makanan khas daerah yang sering dibeli untuk oleh-oleh saat bepergian keluar kota?",
+    answers: [
+      { answer: "Getuk", score: 10 },
+      { answer: "Pempek", score: 30 },
+      { answer: "Lumpia", score: 20 },
+      { answer: "Bakpia", score: 40 }
     ]
   }
 }
