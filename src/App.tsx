@@ -6,8 +6,8 @@ function App() {
     <div className=" w-full h-svh sm:h-screen flex items-center justify-center p-4">
       <div>
         <h1 className=" text-3xl mb-4">FAMILY 100 #ceritanya... 🤔</h1>
-        <Link to="/1">
-          <Button>Pertanyaan ke 1 👉</Button>
+        <Link to="/0">
+          <Button>Pertanyaan Contoh 👉</Button>
         </Link>
       </div>
     </div>
