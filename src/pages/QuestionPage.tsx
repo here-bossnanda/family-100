@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, FormEvent } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -62,7 +62,9 @@ function QuestionPage() {
     )
   }
 
-  const checkAnswer = () => {
+  const checkAnswer = (event: FormEvent) => {
+    event.preventDefault()
+
     const currentAnswer = answer.toLowerCase()
     
     const indexCorrectAnswer = answers.findIndex((a) => a.answer.toLowerCase() === currentAnswer)
@@ -115,15 +117,15 @@ function QuestionPage() {
         <div className=" flex flex-col items-center">
           <h1 className=" text-3xl mb-4">{questions[questionId].question}</h1>
           <div className=" mb-16 mx-auto">
-            <div className=" flex space-x-2 mb-4">
+            <form className=" flex space-x-2 mb-4" onSubmit={checkAnswer}>
               <Input
                 type="text"
                 placeholder="Apa Jawaban Kamu?"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
               />
-              <Button onClick={() => checkAnswer()}>Cek Jawaban 🧐</Button>
-            </div>
+              <Button type="submit">Cek Jawaban 🧐</Button>
+            </form>
             <div className=" grid grid-cols-2 gap-4">
               {answers.map((a, i) => (
                 <Answer
