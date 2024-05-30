@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from "./App.tsx"
 import QuestionPage from "./pages/QuestionPage.tsx"
+import ScrollToTop from "./components/ScrollToTop.tsx"
 import "./index.css"
 import "./styles/bg.css"
 
@@ -13,7 +14,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/:questionId",
-    element: <QuestionPage />
+    element: (
+      <>
+        <ScrollToTop />
+        <QuestionPage />
+      </>
+    )
   },
   {
     path: "/thankyou",
