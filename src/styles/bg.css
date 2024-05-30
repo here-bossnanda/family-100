@@ -1,0 +1,5 @@
+.wave-bg {
+  background-image: url('../assets/bg-wave.svg');
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
