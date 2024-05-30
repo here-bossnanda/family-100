@@ -66,7 +66,7 @@ function QuestionPage() {
     // wait 1 second before navigate
     setTimeout(() => {
       setLoading(false);
-    setAnswer("");
+      setAnswer("");
 
     // Check if the current question is the last one
     if (questionId >= totalQuestion - 1) {
@@ -90,7 +90,7 @@ function QuestionPage() {
     // wait 1 second before navigate
     setTimeout(() => {
       setLoading(false);
-    setAnswer("");
+      setAnswer("");
 
 
     if (questionId > 0) {
@@ -239,7 +239,7 @@ function QuestionPage() {
             <div className="flex items-center gap-4">
               <PreviousButton />
               {questionId !== 0 && (
-                <div className="border-l-2 h-6 border-gray-500"></div>
+                <Separator  orientation="vertical"  />
               )}
               <NextButton />
             </div>
