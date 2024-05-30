@@ -4,6 +4,7 @@ import { useToast } from "@/components/ui/use-toast"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Toaster } from "@/components/ui/toaster"
 import Answer from "@/components/Answer"
 
@@ -34,13 +35,23 @@ function QuestionPage() {
         isCorrect: false
       }))
     )
-    setLoading(false)
   }, [questionId])
 
-  const resetState = () => {
+  const goToNextQuestion = () => {
     setLoading(true)
-    setAnswer("")
-    navigate(`/${nextQuestionId}`)
+    setAnswers(
+      questions[questionId].answers.map((a) => ({
+        ...a,
+        isCorrect: false
+      }))
+    )
+
+    // wait 1 second before navigate
+    setTimeout(() => {
+      setLoading(false)
+      setAnswer("")
+      navigate(`/${nextQuestionId}`)
+    }, 1000)
   }
 
   const NextButton = () => {
@@ -53,9 +64,7 @@ function QuestionPage() {
     }
     return (
       <div>
-        <Button
-          onClick={() => resetState()}
-        >
+        <Button onClick={() => goToNextQuestion()}>
           Pertanyaan ke {nextQuestionId}
         </Button>
       </div>
@@ -66,8 +75,10 @@ function QuestionPage() {
     event.preventDefault()
 
     const currentAnswer = answer.toLowerCase()
-    
-    const indexCorrectAnswer = answers.findIndex((a) => a.answer.toLowerCase() === currentAnswer)
+
+    const indexCorrectAnswer = answers.findIndex(
+      (a) => a.answer.toLowerCase() === currentAnswer
+    )
 
     if (indexCorrectAnswer === -1) {
       toast({
@@ -103,19 +114,15 @@ function QuestionPage() {
     )
   }
 
-  if (loading) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    )
-  }
-
   return (
     <>
       <div className=" w-full h-screen flex items-center justify-center">
         <div className=" flex flex-col items-center">
-          <h1 className=" text-3xl mb-4">{questions[questionId].question}</h1>
+          {loading ? (
+            <Skeleton className=" h-8 w-[500px] mb-4" />
+          ) : (
+            <h1 className=" text-3xl mb-4">{questions[questionId].question}</h1>
+          )}
           <div className=" mb-16 mx-auto">
             <form className=" flex space-x-2 mb-4" onSubmit={checkAnswer}>
               <Input
