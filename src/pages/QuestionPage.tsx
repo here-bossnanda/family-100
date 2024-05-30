@@ -28,8 +28,6 @@ function QuestionPage() {
       isCorrect: false
     }))
   )
-  const prevQuestionId = questionId - 1
-  const nextQuestionId = questionId + 1
   const totalQuestion = Object.keys(questions).length
 
   const questionText =
@@ -52,62 +50,41 @@ function QuestionPage() {
     )
   }, [questionId])
 
-  const goToNextQuestion = () => {
-    setLoading(true)
+  const goToNavigateQuestion = (isNext:boolean) => {
+    setLoading(true);
 
-    
     setAnswers(
       questions[questionId].answers.map((a) => ({
         ...a,
-        isCorrect: false
+        isCorrect: false,
       }))
-    )
+    );
 
     // wait 1 second before navigate
     setTimeout(() => {
       setLoading(false);
       setAnswer("");
 
-    // Check if the current question is the last one
-    if (questionId >= totalQuestion - 1) {
-      navigate('/thankyou');
-    } else {
-      navigate(`/${nextQuestionId}`);
-    }
-    }, 1000)
-  }
-
-  const goToPrevQuestion = () => {
-    setLoading(true)
-
-    setAnswers(
-      questions[questionId].answers.map((a) => ({
-        ...a,
-        isCorrect: false
-      }))
-    )
-
-    // wait 1 second before navigate
-    setTimeout(() => {
-      setLoading(false);
-      setAnswer("");
-
-
-    if (questionId > 0) {
-      navigate(`/${prevQuestionId}`);
-    }
-    }, 1000)
-  }
+      if (isNext) {
+        if (questionId >= totalQuestion - 1) {
+          navigate('/thankyou');
+        } else {
+          navigate(`/${questionId + 1}`);
+        }
+      } else {
+        if (questionId > 0) {
+          navigate(`/${questionId - 1}`);
+        }
+      }
+    }, 1000);
+  };
 
   const PreviousButton = () => {
     if (questionId > 0) {
-      let word = `👈 Balik ke sebelumnya`;
-      if (questionId === 1) {
-        word = "👈 balik ke contoh";
-      }
+      const word = questionId === 1 ? "👈 balik ke contoh" : "👈 Balik ke sebelumnya";
       return (
         <div>
-          <Button onClick={goToPrevQuestion}>
+          <Button onClick={() => goToNavigateQuestion(false)}>
             {word}
           </Button>
         </div>
@@ -122,16 +99,16 @@ function QuestionPage() {
         <Link to="/thankyou">
           <Button>Selesai 🎉</Button>
         </Link>
-      )
+      );
     }
     return (
       <div>
-        <Button onClick={() => goToNextQuestion()}>
-          Lanjut ke pertanyaan {nextQuestionId} 👉
+        <Button onClick={() => goToNavigateQuestion(true)}>
+          Lanjut ke pertanyaan {questionId + 1} 👉
         </Button>
       </div>
-    )
-  }
+    );
+  };
 
   const checkAnswer = (event: FormEvent) => {
     event.preventDefault()
